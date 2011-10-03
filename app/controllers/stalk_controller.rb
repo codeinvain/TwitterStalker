@@ -1,5 +1,4 @@
 class StalkController < ApplicationController
-  require 'cache'
   CacheExperation= 20 * 24 * 60 * 60 # 20 days in seconds
   Namespace = 'ts' 
   Stalkee = "#{Namespace}:stalkee" 
