@@ -1,0 +1,2 @@
+module StalkHelper
+end

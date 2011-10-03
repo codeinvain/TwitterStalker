@@ -1,0 +1,38 @@
+<center>
+  <a href="/" border="0"><%= image_tag "logo.png",:alt=>'Twitter Stalker' ,:style=>"padding-top:1px;margin-bottom:-30px;"%></a>
+  <%= form_tag '/', :id => 'new_stalk',:name=>'new_stalk', :method=>:get do%>
+    <%=text_field_tag 'q',params['q'] %>
+    <input type="submit" value="Search">
+  <%end%>
+</center>
+<div class="results">
+  <%if @results%>
+    <h2>Stalkees</h2>
+    <div class="stalkee">
+      <%@results['stalkees'].each do |stalkee|%>
+        <div style="float:left;margin-right:20px;">
+        <%=image_tag stalkee['profile_image']%>
+        <span><%=stalkee['name']%></span>
+      </div>
+      <%end%>
+    </div> 
+    <div style="clear:both"></div>
+    <h2>Common Followers</h2>
+    <%@results['followers'].each do |follower|%>
+      <div class="follower">
+        <%=image_tag follower['profile_image'],:width=>48 ,:height=>48,:align=>'left',:style=>'margin:2px'%>
+        <%=link_to "@#{follower['screen_name']}","http://www.twitter.com/#{follower['screen_name']}"%>
+        <br/>
+        <span><%=follower['name']%></span>
+
+      </div> 
+    <%end%>
+  <%end%>
+  <div style="clear:both"></div>
+</div> 
+
+<div class="footer">
+  by  <a href="http://www.twitter.com/rauchy">@rauchy</a> / <a href="http://www.twitter.com/unativ">@unativ</a> / <a href="http://www.twitter.com/danielissimo">@danielissimo</a>
+  <br/>
+  <a href="http://www.meetup.com/IsraelRubyUnderground/photos/3574042/59007522/#59007472">for hackaton #1 </a>
+</div>
