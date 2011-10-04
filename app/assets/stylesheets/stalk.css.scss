@@ -10,10 +10,11 @@ body,form {
 }
 
 input[type=text] {
-  font-size: 1.5em;
+  font-size: 1em;
   width:400px;
   border:1px solid #d9d9d9;
   margin:0px ;
+
 }
 input[type=submit] {
   font-size: 0.7em;
@@ -22,7 +23,7 @@ input[type=submit] {
   background-color:#f4f4f4;
   border:1px solid #d9d9d9;
   margin:0px auto;
-  padding:5px;
+  padding:3px;
 }
 .stalkee img
 {
@@ -53,5 +54,10 @@ input[type=submit] {
 {
   text-align:center;
   font-size:0.7em;
-  margin:10px;
+  margin:50px;
+}
+
+.help{
+  color:gray;
+  font-size:0.7em;
 }

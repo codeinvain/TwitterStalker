@@ -1,8 +1,42 @@
 <center>
   <a href="/" border="0"><%= image_tag "logo.png",:alt=>'Twitter Stalker' ,:style=>"padding-top:1px;margin-bottom:-30px;"%></a>
   <%= form_tag '/', :id => 'new_stalk',:name=>'new_stalk', :method=>:get do%>
-    <%=text_field_tag 'q',params['q'] %>
-    <input type="submit" value="Search">
+    <div style="text-align:left;width:500px;">
+      <%=text_field_tag 'q',params['q'] %>
+      <input type="submit" value="Search"/><br/>
+    <% if params[:q].nil?%>
+    <div class="help">
+      Tip: Use commas to compare multiple search terms.
+      <br/><br/>
+      Examples
+      <table width="100%" cellspacing="0" cellmargin="0">
+        <tr>
+          <td>
+            <a href="/?q=danielissimo,rauchy">danielissimo,rauchy</a>
+          </td>
+          <td>
+            <a href="/?q=liorsion,arikfr,unativ">liorsion,arikfr,unativ</a>
+          </td>
+          <td>
+            <a href="/?q=aviavital,danielissimo">aviavital,danielissimo </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="/?q=avish,liorz">avish,liorz</a>
+          </td>
+          <td>
+            <a href="/?q=erezcarmel,aloncarmel,grimland,yaronta ">erezcarmel,aloncarmel,grimland,yaronta </a>
+          </td>
+          <td>
+            <a href="/?q=chekofif,roniyaniv">chekofif,roniyaniv </a>
+          </td>
+        </tr>
+      </table>
+      <div/>
+    <%end%>
+    <div>
+      
   <%end%>
 </center>
 <div class="results">
