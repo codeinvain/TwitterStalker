@@ -61,3 +61,15 @@ input[type=submit] {
   color:gray;
   font-size:0.7em;
 }
+.notice
+{
+  padding:5px;
+  border:1px solid red;
+  border-radius:5px;
+  background-color:pink;
+  margin:10px;
+  .example{
+    font-size:0.7em;
+  }
+}
+

@@ -16,6 +16,7 @@ class StalkController < ApplicationController
   def index
     if params[:q]
       stalkees = params[:q].gsub(/\s/,',').split(',').collect{|item| item.strip.gsub(/^\@/,'')}.compact.sort
+      @subject_count = stalkees.length
       @results = do_search(stalkees)
     end
   end
