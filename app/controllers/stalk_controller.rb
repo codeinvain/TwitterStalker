@@ -21,6 +21,7 @@ class StalkController < ApplicationController
   end
 
   def do_search(stalkees)
+    @redis.zincrby "#{Namespace}:search" ,1 ,stalkees.join(':')
     results = {}
     results['stalkees'] = []
     stalkees.each do |name|
