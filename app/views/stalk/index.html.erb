@@ -1,12 +1,17 @@
 <center>
-  <a href="/" border="0"><%= image_tag "logo.png",:alt=>'Twitter Stalker' ,:style=>"padding-top:1px;margin-bottom:-30px;"%></a>
+  
+  <a href="/" border="0">
+    <%= image_tag "logo.png",:alt=>'Twitter Stalker' ,:style=>"padding-top:1px;margin-bottom:-30px;"%>
+  </a>
+  <h2 style="margin-top:-40px;margin-bottom:40px">Track Down Common Followers </h2>
+
   <%= form_tag '/', :id => 'new_stalk',:name=>'new_stalk', :method=>:get do%>
     <div style="text-align:left;width:500px;">
-      <%=text_field_tag 'q',params['q'] %>
+      <%=text_field_tag 'q',params['q']  %>
       <input type="submit" value="Search"/><br/>
     <% if params[:q].nil?%>
     <div class="help">
-      Tip: Use commas to compare multiple search terms.
+      Tip: Narrow followers by searching <b>multiple</b> twitter users
       <br/><br/>
       Examples
       <table width="100%" cellspacing="0" cellmargin="0">
@@ -41,7 +46,7 @@
 </center>
 <div class="results">
   <%if @results%>
-    <h2>Stalkees</h2>
+    <h3>Stalkees</h3>
     <div class="stalkee">
       <%@results['stalkees'].each do |stalkee|%>
         <div style="float:left;margin-right:20px;">
@@ -51,7 +56,7 @@
       <%end%>
     </div> 
     <div style="clear:both"></div>
-    <h2>Common Followers</h2>
+    <h3>Common Followers</h3>
     <%@results['followers'].each do |follower|%>
       <div class="follower">
         <%=image_tag follower['profile_image'],:width=>48 ,:height=>48,:align=>'left',:style=>'margin:2px'%>
