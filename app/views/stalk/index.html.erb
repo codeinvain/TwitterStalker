@@ -3,7 +3,7 @@
   <a href="/" border="0">
     <%= image_tag "logo.png",:alt=>'Twitter Stalker' ,:style=>"padding-top:1px;margin-bottom:-30px;"%>
   </a>
-  <h2 style="margin-top:-40px;margin-bottom:40px">Track Down Common Followers </h2>
+  <h2 style="margin-top:-40px;margin-bottom:40px">Track Down Mutual Followers </h2>
 
   <%= form_tag '/', :id => 'new_stalk',:name=>'new_stalk', :method=>:get do%>
     <div style="text-align:left;width:500px;">
@@ -44,7 +44,7 @@
   <%end%>
   <% if @subject_count==1%>
     <div class="notice">
-      add more users to track down common followers 
+      add more users to track down mutual followers 
       <div class="example">
         for example "<b><%=params[:q]%>,danielissimo</b>"
       </div>
@@ -63,7 +63,7 @@
       <%end%>
     </div> 
     <div style="clear:both"></div>
-    <h3>Common Followers</h3>
+    <h3>Mutual Followers</h3>
     <%@results['followers'].each do |follower|%>
       <div class="follower">
         <%=image_tag follower['profile_image'],:width=>48 ,:height=>48,:align=>'left',:style=>'margin:2px'%>
