@@ -52,23 +52,28 @@
 <div class="results">
   <%if @results%>
     <h3>Stalkees</h3>
-    <div class="stalkee">
-      <%@results['stalkees'].each do |stalkee|%>
+    <%@results['stalkees'].each do |stalkee|%>
+      <div class="stalkee">
+        <button class="add_follower" title="remove stalkee" onclick="return remove('<%=stalkee['name']%>')">-</button> 
         <div style="float:left;margin-right:20px;">
           <%=image_tag stalkee['profile_image']%>
           <span><%=stalkee['name']%></span>
         </div>
+      </div> 
+      <%if @results['stalkees'].last!=stalkee%>
+        <div style="float:left;margin-top:30px;">+</div>
       <%end%>
-    </div> 
+    <%end%>
     <div style="clear:both"></div>
     <h3>Mutual Followers</h3>
     <%@results['followers'].each do |follower|%>
       <div class="follower">
+        <button class="add_follower" title="add to stalkees" onclick="return intersect('<%=follower['screen_name']%>')">+</button>
         <%=image_tag follower['profile_image'],:width=>48 ,:height=>48,:align=>'left',:style=>'margin:2px'%>
         <%=link_to "@#{follower['screen_name']}","http://www.twitter.com/#{follower['screen_name']}"%>
         <br/>
         <span><%=follower['name']%></span>
-
+        
       </div> 
     <%end%>
   <%end%>

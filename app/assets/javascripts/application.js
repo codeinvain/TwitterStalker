@@ -45,3 +45,17 @@ function flash_button(increment,timeout){
   increment++
   setTimeout(flash_button,timeout,increment,timeout)
 }
+function intersect(name){
+  _gat._getTrackerByName()._trackEvent('Action Button','narrow search');
+  setTimeout('window.location = "' + "/?utf8=✓&q="+$("#q").val()+","+name+ '"', 100);
+  return false;
+}
+
+function remove(name){
+  _gat._getTrackerByName()._trackEvent('Action Button','expand search');
+  var next_url =window.location.href.replace(name,'').replace(',,',',').replace('=,','=') 
+  setTimeout('window.location = "' +next_url+ '"', 100);
+  return false;
+}
+
+
