@@ -1,7 +1,8 @@
 class StalkController < ApplicationController
-
+  
   def index
-    if params[:q]
+    @subject_count = 0
+    if params[:q] && !params[:q].empty?
       stalkees = params[:q].gsub(/\s/,',').split(',').collect{|item| item.strip.gsub(/^\@/,'')}.reject{|s| s.empty?}.sort
       @subject_count = stalkees.length
       stalker = Stalker.new(stalkees)

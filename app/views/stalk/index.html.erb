@@ -7,7 +7,7 @@
     <div style="text-align:left;width:500px;">
       <%=text_field_tag 'q',params['q']  %>
       <input type="submit" value="Search" id="submit"/><br/>
-      <% if params[:q].nil? then%>
+      <% if @subject_count==0 then%>
         <div class="help">
           Tip: Narrow followers by searching <b>multiple</b> twitter users
           <br/><br/>
