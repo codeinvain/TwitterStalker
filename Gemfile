@@ -16,6 +16,10 @@ group :assets do
   gem 'uglifier'
 end
 
+group :production do
+  gem 'therubyracer'
+end
+
 gem 'jquery-rails'
 gem 'redis',:git=>'git://github.com/ezmobius/redis-rb.git' #use head features of redis gem
 gem 'twitter'
