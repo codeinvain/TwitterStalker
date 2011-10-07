@@ -1,0 +1,13 @@
+
+
+
+<div class="results">
+  <H2>Top Searches</H2>
+  <ol>
+
+  <%@results.each do |term|%>
+    <li><a href="/?q=<%=term.gsub(':',',')%>"><%=term.gsub(':',' + ')%></a></li>
+  <%end%>
+  </ol>
+</div>
+

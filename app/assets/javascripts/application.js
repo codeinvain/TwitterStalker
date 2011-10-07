@@ -8,24 +8,40 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(document).ready(function() {
-  $('form#new_stalk').bind("ajax:success", function(event, data, status, xhr) {
-    console.dir(data)
-    $("#f1").html("")
-    // for (var i=0;i<3;i++){
-    //   $.ajax({url:'http://twitter.com/users/'+data[i]+'.json?callback=twitterResponse',method:'get',dataType:'jsonp'},function(data){
-    //     console.log(data)
-    //   });
-    // }
-  });
-});
 
-// function  twitterResponse(data){
-//   var html = '<div class="user_frame">'
-//   html+='<span class="title">'+data.name+'</span>'
-//   html+='<br/>'
-//   html+='<img src="'+data.profile_image_url+'">'
-//   html+='</div>'
-//   $("#f1").html($("#f1").html()+html)
-// }
+// var orig_border = null;
 
+function demo_multiple_users(){
+  demo_str = ',danielissimo'
+  index= 0;
+  orig_border = $("#q").css('border')
+  $("#q").css('border','1px solid pink')
+  text_input_mock(demo_str,index);
+}
+
+function text_input_mock(demo_str,index){
+  char = demo_str.charAt(index)
+  val = $('#q').val();
+  $('#q').val(val+char);
+  if (index<demo_str.length-1){
+    index++
+    setTimeout(text_input_mock,100,demo_str,index)
+  }else{
+    $("#q").css('border',orig_border);
+    $(".notice").css('opacity','0')
+    inc = 0
+    flash_button(0,100)
+    setTimeout(auto_redirect,2000)
+  }
+}
+
+function auto_redirect(){
+  window.location = "/?utf8=✓&q="+$("#q").val()
+}
+
+function flash_button(increment,timeout){
+  var color = (increment%2==0) ? 'pink' : '#5CAED7';
+  $("#submit").css('border-color',color);
+  increment++
+  setTimeout(flash_button,timeout,increment,timeout)
+}

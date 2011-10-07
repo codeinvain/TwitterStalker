@@ -1,14 +1,12 @@
 <center>
 
-  <a href="/" border="0">
-    <%= image_tag "logo.png",:alt=>'Twitter Stalker' ,:style=>"padding-top:1px;margin-bottom:-30px;"%>
-  </a>
+ 
   <h2 style="margin-top:-40px;margin-bottom:40px">Track Down Mutual Followers </h2>
 
   <%= form_tag '/', :id => 'new_stalk',:name=>'new_stalk', :method=>:get do%>
     <div style="text-align:left;width:500px;">
       <%=text_field_tag 'q',params['q']  %>
-      <input type="submit" value="Search"/><br/>
+      <input type="submit" value="Search" id="submit"/><br/>
       <% if params[:q].nil? then%>
         <div class="help">
           Tip: Narrow followers by searching <b>multiple</b> twitter users
@@ -46,7 +44,7 @@
     <div class="notice">
       add more users to track down mutual followers 
       <div class="example">
-        for example "<b><%=params[:q]%>,danielissimo</b>"
+        for example "<b><%=params[:q]%>,danielissimo</b>" <a href="javascript:demo_multiple_users()">show me how ?</a>
       </div>
     </div>
   <%end%>

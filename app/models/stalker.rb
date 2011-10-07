@@ -7,7 +7,7 @@ class Stalker
   FollowerSet = "#{Namespace}:followers"
   StalkeeDiff ="#{Namespace}:diff"
 
-  DemoSearches = ['danielissimo,rauchy',	'liorsion,arikfr,unativ',	'aviavital,danielissimo','avish,liorz',	'erezcarmel,aloncarmel,grimland,yaronta',	'chekofif,roniyaniv']
+  DemoSearches = ['danielissimo:rauchy',	'arikfr:liorsion:unativ',	'aviavital:danielissimo','avish:liorz',	'aloncarmel:erezcarmel:grimland:yaronta',	'chekofif:roniyaniv']
 
   def initialize(stalkees)
     @stalkees = stalkees
@@ -87,6 +87,12 @@ class Stalker
 
   def stalkee_exists?(name)
     return $redis.exists "#{Stalkee}:#{name}:info"
+  end
+
+  def self.top_searches
+    stored_top_searches = $redis.zrevrangebyscore("#{Namespace}:search" ,'+inf' ,0 ,{:limit=> [0, 100 ]} )  
+    removed_demo_searches = stored_top_searches - DemoSearches
+    removed_single_searches = removed_demo_searches.reject{|s| !s.include?(':')}
   end
 
 

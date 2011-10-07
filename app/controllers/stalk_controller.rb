@@ -9,4 +9,7 @@ class StalkController < ApplicationController
     end
   end
 
+  def top
+    @results = Stalker.top_searches
+  end
 end
