@@ -4,7 +4,7 @@
   <h2 style="margin-top:-40px;margin-bottom:40px">Track Down Mutual Followers </h2>
 
   <%= form_tag '/', :id => 'new_stalk',:name=>'new_stalk', :method=>:get do%>
-    <div style="text-align:left;width:500px;">
+    <div style="text-align:center;">
       <%=text_field_tag 'q',params['q']  %>
       <input type="submit" value="Search" id="submit"/><br/>
       <% if @subject_count==0 then%>
@@ -55,10 +55,11 @@
     <%@results['stalkees'].each do |stalkee|%>
       <div class="stalkee">
         <button class="add_follower" title="remove stalkee" onclick="return remove('<%=stalkee['name']%>')">-</button> 
-        <div style="float:left;margin-right:20px;">
-          <%=image_tag stalkee['profile_image']%>
-          <span><%=stalkee['name']%></span>
-        </div>
+        <%=image_tag stalkee['profile_image'],:width=>48 ,:height=>48,:align=>'left',:style=>'margin:2px'%>
+        
+        <span><%=stalkee['name']%></span>
+        <br/><br/>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="@<%=stalkee['name']%> you've been stalked on" data-count="none">Tweet</a>
       </div> 
       <%if @results['stalkees'].last!=stalkee%>
         <div style="float:left;margin-top:30px;">+</div>
@@ -73,7 +74,7 @@
         <%=link_to "@#{follower['screen_name']}","http://www.twitter.com/#{follower['screen_name']}"%>
         <br/>
         <span><%=follower['name']%></span>
-        
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="@<%=follower['screen_name']%> you've been stalked on" data-count="none">Tweet</a> 
       </div> 
     <%end%>
   <%end%>

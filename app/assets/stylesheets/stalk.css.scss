@@ -52,7 +52,6 @@ input[type=submit] {
 }
 .stalkee,.follower
 {
-  height:52px;
   overflow:hidden;
   min-width:230px;
   float:left;
@@ -62,6 +61,9 @@ input[type=submit] {
   -webkit-box-shadow:#e0e0e0 1px 1px 5px 0;
   background-color:#e8f4fa;
   margin:10px;
+}
+.follower{
+  height:58px;
 }
 .results
 {
@@ -91,4 +93,8 @@ input[type=submit] {
   }
 }
 
-
+.twitter-share-button
+{
+  float:right;
+  margin:2px;
+}
