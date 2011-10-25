@@ -73,7 +73,7 @@
         <%=image_tag follower['profile_image'],:width=>48 ,:height=>48,:align=>'left',:style=>'margin:2px'%>
         <%=link_to "@#{follower['screen_name']}","http://www.twitter.com/#{follower['screen_name']}"%>
         <br/>
-        <span><%=follower['name']%></span>
+        <span><%=follower['name']%></span><br/>
         <a href="https://twitter.com/share" class="twitter-share-button" data-text="@<%=follower['screen_name']%> you've been stalked on" data-count="none">Tweet</a> 
       </div> 
     <%end%>
